@@ -7,7 +7,7 @@ import PowerButton from "./PowerButton";
 import RangeVolumen from "./RangeVolumen";
 
 import * as instrument from "./drumInstrument";
-import { unstable_createChainedFunction } from "@mui/utils";
+import DrumSoundScreen from "./DrumSoundScreen";
 
 const DrumContainer = styled.div`
 	position: relative;
@@ -32,6 +32,8 @@ const Drum = () => {
 	const [sound8, setSound8] = useState(8);
 	const [sound9, setSound9] = useState(9);
 
+	const [screenShow, setScreenShow] = useState(false);
+
 	const showWaves1 = () => setSound1(Math.random());
 	const showWaves2 = () => setSound2(Math.random());
 	const showWaves3 = () => setSound3(Math.random());
@@ -41,6 +43,8 @@ const Drum = () => {
 	const showWaves7 = () => setSound7(Math.random());
 	const showWaves8 = () => setSound8(Math.random());
 	const showWaves9 = () => setSound9(Math.random());
+
+	const showScreen = () => {};
 
 	useEffect(() => {
 		const listener = e => {
@@ -112,6 +116,7 @@ const Drum = () => {
 				waveSound={showWaves9}
 				key={sound9}
 			/>
+			{screenShow && <DrumSoundScreen />}
 		</DrumContainer>
 	);
 };
