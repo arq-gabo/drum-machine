@@ -17,10 +17,10 @@ const DrumScreenContainer = styled.div`
 	transform: translate(-50%, -50%);
 `;
 
-const DrumSoundScreen = () => {
+const DrumSoundScreen = ({ nameSound }) => {
 	return (
 		<DrumScreenContainer>
-			<h4>DrumSoundScreen</h4>
+			<h4>{nameSound}</h4>
 		</DrumScreenContainer>
 	);
 };

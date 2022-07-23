@@ -8,7 +8,6 @@ const DrumWithStyle = styled.div`
 	height: ${({ drumStyle }) => drumStyle.height};
 	top: ${({ drumStyle }) => drumStyle.top};
 	left: ${({ drumStyle }) => drumStyle.left};
-	//background-color: ${({ drumStyle }) => drumStyle.backgroundColor};
 	cursor: pointer;
 `;
 
@@ -22,12 +21,10 @@ const DrumLetter = styled.h3`
 const WaveContainer = styled.div`
 	width: 100%;
 	height: 100%;
-	//background-color: grey;
 	border-radius: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	//opacity: 0.3;
 `;
 
 const waves = keyframes`

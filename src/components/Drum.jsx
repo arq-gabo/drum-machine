@@ -33,41 +33,51 @@ const Drum = () => {
 	const [sound9, setSound9] = useState(9);
 
 	const [screenShow, setScreenShow] = useState(false);
+	const [nameSound, setNameSound] = useState("");
 
 	const showWaves1 = () => {
 		setSound1(Math.random());
+		setNameSound(instrument.drumIntrument1.soundName);
 		showScreen();
 	};
 	const showWaves2 = () => {
 		setSound2(Math.random());
+		setNameSound(instrument.drumIntrument2.soundName);
 		showScreen();
 	};
 	const showWaves3 = () => {
 		setSound3(Math.random());
+		setNameSound(instrument.drumIntrument3.soundName);
 		showScreen();
 	};
 	const showWaves4 = () => {
 		setSound4(Math.random());
+		setNameSound(instrument.drumIntrument4.soundName);
 		showScreen();
 	};
 	const showWaves5 = () => {
 		setSound5(Math.random());
+		setNameSound(instrument.drumIntrument5.soundName);
 		showScreen();
 	};
 	const showWaves6 = () => {
 		setSound6(Math.random());
+		setNameSound(instrument.drumIntrument6.soundName);
 		showScreen();
 	};
 	const showWaves7 = () => {
 		setSound7(Math.random());
+		setNameSound(instrument.drumIntrument7.soundName);
 		showScreen();
 	};
 	const showWaves8 = () => {
 		setSound8(Math.random());
+		setNameSound(instrument.drumIntrument8.soundName);
 		showScreen();
 	};
 	const showWaves9 = () => {
 		setSound9(Math.random());
+		setNameSound(instrument.drumIntrument9.soundName);
 		showScreen();
 	};
 
@@ -93,7 +103,7 @@ const Drum = () => {
 		setScreenShow(true);
 		setTimeout(() => {
 			setScreenShow(false);
-		}, 2000);
+		}, 2500);
 	};
 
 	return (
@@ -148,7 +158,7 @@ const Drum = () => {
 				waveSound={showWaves9}
 				key={sound9}
 			/>
-			{screenShow && <DrumSoundScreen />}
+			{screenShow && <DrumSoundScreen nameSound={nameSound} />}
 		</DrumContainer>
 	);
 };
