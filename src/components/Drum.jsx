@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+//Components
 import drum from "../drum.png";
 import DrumInstrument from "./DrumInstrument";
 import PowerButton from "./PowerButton";
 import RangeVolumen from "./RangeVolumen";
 
+//Characteristics of each instrument
 import * as instrument from "./drumInstrument";
 import DrumSoundScreen from "./DrumSoundScreen";
 
@@ -22,65 +24,70 @@ const DrumControl = styled.div`
 `;
 
 const Drum = () => {
-	const [sound1, setSound1] = useState(1);
-	const [sound2, setSound2] = useState(2);
-	const [sound3, setSound3] = useState(3);
-	const [sound4, setSound4] = useState(4);
-	const [sound5, setSound5] = useState(5);
-	const [sound6, setSound6] = useState(6);
-	const [sound7, setSound7] = useState(7);
-	const [sound8, setSound8] = useState(8);
-	const [sound9, setSound9] = useState(9);
+	//State of sound waves
+	const [soundWaves1, setSoundWaves1] = useState(1);
+	const [soundWaves2, setSoundWaves2] = useState(2);
+	const [soundWaves3, setSoundWaves3] = useState(3);
+	const [soundWaves4, setSoundWaves4] = useState(4);
+	const [soundWaves5, setSoundWaves5] = useState(5);
+	const [soundWaves6, setSoundWaves6] = useState(6);
+	const [soundWaves7, setSoundWaves7] = useState(7);
+	const [soundWaves8, setSoundWaves8] = useState(8);
+	const [soundWaves9, setSoundWaves9] = useState(9);
 
+	//State of temp name sound screen
 	const [screenShow, setScreenShow] = useState(false);
 	const [nameSound, setNameSound] = useState("");
 
+	//Functions for show waves in each instrument
 	const showWaves1 = () => {
-		setSound1(Math.random());
+		setSoundWaves1(Math.random());
 		setNameSound(instrument.drumIntrument1.soundName);
 		showScreen();
+		//playSound(instrument.drumIntrument1.url);
 	};
 	const showWaves2 = () => {
-		setSound2(Math.random());
+		setSoundWaves2(Math.random());
 		setNameSound(instrument.drumIntrument2.soundName);
 		showScreen();
 	};
 	const showWaves3 = () => {
-		setSound3(Math.random());
+		setSoundWaves3(Math.random());
 		setNameSound(instrument.drumIntrument3.soundName);
 		showScreen();
 	};
 	const showWaves4 = () => {
-		setSound4(Math.random());
+		setSoundWaves4(Math.random());
 		setNameSound(instrument.drumIntrument4.soundName);
 		showScreen();
 	};
 	const showWaves5 = () => {
-		setSound5(Math.random());
+		setSoundWaves5(Math.random());
 		setNameSound(instrument.drumIntrument5.soundName);
 		showScreen();
 	};
 	const showWaves6 = () => {
-		setSound6(Math.random());
+		setSoundWaves6(Math.random());
 		setNameSound(instrument.drumIntrument6.soundName);
 		showScreen();
 	};
 	const showWaves7 = () => {
-		setSound7(Math.random());
+		setSoundWaves7(Math.random());
 		setNameSound(instrument.drumIntrument7.soundName);
 		showScreen();
 	};
 	const showWaves8 = () => {
-		setSound8(Math.random());
+		setSoundWaves8(Math.random());
 		setNameSound(instrument.drumIntrument8.soundName);
 		showScreen();
 	};
 	const showWaves9 = () => {
-		setSound9(Math.random());
+		setSoundWaves9(Math.random());
 		setNameSound(instrument.drumIntrument9.soundName);
 		showScreen();
 	};
 
+	// For managing waves and sound on the keyboard
 	useEffect(() => {
 		const listener = e => {
 			if (e.key === instrument.drumIntrument1.keyBtn) showWaves1();
@@ -99,6 +106,7 @@ const Drum = () => {
 		};
 	}, []);
 
+	// Function for show name sound in time laps
 	const showScreen = () => {
 		setScreenShow(true);
 		setTimeout(() => {
@@ -116,47 +124,47 @@ const Drum = () => {
 			<DrumInstrument
 				drumProps={instrument.drumIntrument1}
 				waveSound={showWaves1}
-				key={sound1}
+				key={soundWaves1}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument2}
 				waveSound={showWaves2}
-				key={sound2}
+				key={soundWaves2}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument3}
 				waveSound={showWaves3}
-				key={sound3}
+				key={soundWaves3}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument4}
 				waveSound={showWaves4}
-				key={sound4}
+				key={soundWaves4}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument5}
 				waveSound={showWaves5}
-				key={sound5}
+				key={soundWaves5}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument6}
 				waveSound={showWaves6}
-				key={sound6}
+				key={soundWaves6}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument7}
 				waveSound={showWaves7}
-				key={sound7}
+				key={soundWaves7}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument8}
 				waveSound={showWaves8}
-				key={sound8}
+				key={soundWaves8}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument9}
 				waveSound={showWaves9}
-				key={sound9}
+				key={soundWaves9}
 			/>
 			{screenShow && <DrumSoundScreen nameSound={nameSound} />}
 		</DrumContainer>

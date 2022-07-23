@@ -55,6 +55,7 @@ const DrumInstrument = props => {
 			</div>
 			<WaveContainer>
 				<Wave />
+				<audio src={props.drumProps.url} autoPlay />
 			</WaveContainer>
 		</DrumWithStyle>
 	);
