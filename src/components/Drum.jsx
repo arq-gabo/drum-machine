@@ -34,17 +34,42 @@ const Drum = () => {
 
 	const [screenShow, setScreenShow] = useState(false);
 
-	const showWaves1 = () => setSound1(Math.random());
-	const showWaves2 = () => setSound2(Math.random());
-	const showWaves3 = () => setSound3(Math.random());
-	const showWaves4 = () => setSound4(Math.random());
-	const showWaves5 = () => setSound5(Math.random());
-	const showWaves6 = () => setSound6(Math.random());
-	const showWaves7 = () => setSound7(Math.random());
-	const showWaves8 = () => setSound8(Math.random());
-	const showWaves9 = () => setSound9(Math.random());
-
-	const showScreen = () => {};
+	const showWaves1 = () => {
+		setSound1(Math.random());
+		showScreen();
+	};
+	const showWaves2 = () => {
+		setSound2(Math.random());
+		showScreen();
+	};
+	const showWaves3 = () => {
+		setSound3(Math.random());
+		showScreen();
+	};
+	const showWaves4 = () => {
+		setSound4(Math.random());
+		showScreen();
+	};
+	const showWaves5 = () => {
+		setSound5(Math.random());
+		showScreen();
+	};
+	const showWaves6 = () => {
+		setSound6(Math.random());
+		showScreen();
+	};
+	const showWaves7 = () => {
+		setSound7(Math.random());
+		showScreen();
+	};
+	const showWaves8 = () => {
+		setSound8(Math.random());
+		showScreen();
+	};
+	const showWaves9 = () => {
+		setSound9(Math.random());
+		showScreen();
+	};
 
 	useEffect(() => {
 		const listener = e => {
@@ -63,6 +88,13 @@ const Drum = () => {
 			document.removeEventListener("keydown", listener);
 		};
 	}, []);
+
+	const showScreen = () => {
+		setScreenShow(true);
+		setTimeout(() => {
+			setScreenShow(false);
+		}, 2000);
+	};
 
 	return (
 		<DrumContainer>
