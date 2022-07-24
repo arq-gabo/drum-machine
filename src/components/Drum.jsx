@@ -39,6 +39,9 @@ const Drum = () => {
 	const [screenShow, setScreenShow] = useState(false);
 	const [nameSound, setNameSound] = useState("");
 
+	//State of volumen volumen level
+	const [volumen, setVolumen] = useState(50);
+
 	//Functions for show waves in each instrument
 	const showWaves1 = () => {
 		setSoundWaves1(Math.random());
@@ -113,57 +116,71 @@ const Drum = () => {
 		}, 2500);
 	};
 
+	//Function for adjust volumen level
+	const handleVolumen = e => {
+		setVolumen(e.target.value);
+	};
+
 	return (
 		<DrumContainer>
 			<DrumControl>
 				<PowerButton />
-				<RangeVolumen />
+				<RangeVolumen valVolumen={volumen} handleVolumen={handleVolumen} />
 			</DrumControl>
 			<img src={drum} alt="drum"></img>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument1}
 				waveSound={showWaves1}
 				key={soundWaves1}
+				valVolumen={volumen}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument2}
 				waveSound={showWaves2}
 				key={soundWaves2}
+				valVolumen={volumen}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument3}
 				waveSound={showWaves3}
 				key={soundWaves3}
+				valVolumen={volumen}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument4}
 				waveSound={showWaves4}
 				key={soundWaves4}
+				valVolumen={volumen}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument5}
 				waveSound={showWaves5}
 				key={soundWaves5}
+				valVolumen={volumen}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument6}
 				waveSound={showWaves6}
 				key={soundWaves6}
+				valVolumen={volumen}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument7}
 				waveSound={showWaves7}
 				key={soundWaves7}
+				valVolumen={volumen}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument8}
 				waveSound={showWaves8}
 				key={soundWaves8}
+				valVolumen={volumen}
 			/>
 			<DrumInstrument
 				drumProps={instrument.drumIntrument9}
 				waveSound={showWaves9}
 				key={soundWaves9}
+				valVolumen={volumen}
 			/>
 			{screenShow && <DrumSoundScreen nameSound={nameSound} />}
 		</DrumContainer>

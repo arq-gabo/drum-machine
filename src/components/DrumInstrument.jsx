@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 
 const DrumWithStyle = styled.div`
@@ -48,6 +48,12 @@ const Wave = styled.div`
 `;
 
 const DrumInstrument = props => {
+	const audioLevel = useRef();
+
+	useEffect(() => {
+		audioLevel.current.volume = props.valVolumen / 100;
+	}, []);
+
 	return (
 		<DrumWithStyle drumStyle={props.drumProps} onClick={props.waveSound}>
 			<div>
@@ -55,7 +61,7 @@ const DrumInstrument = props => {
 			</div>
 			<WaveContainer>
 				<Wave />
-				<audio src={props.drumProps.url} autoPlay />
+				<audio src={props.drumProps.url} ref={audioLevel} autoPlay />
 			</WaveContainer>
 		</DrumWithStyle>
 	);

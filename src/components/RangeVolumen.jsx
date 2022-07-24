@@ -18,24 +18,24 @@ const VolumenRange = styled.div`
 const TextVolumen = styled.span`
 	color: #413f42;
 	font-weight: bold;
+	margin: 0 5px;
 `;
 
-const RangeVolumen = () => {
-	const [volumen, setVolumen] = useState(50);
-
-	const handleChange = e => {
-		setVolumen(e.target.value);
-	};
-
+const RangeVolumen = props => {
 	return (
 		<VolumenContainer>
 			<TextVolumen>Volumen</TextVolumen>
 			<VolumenRange>
 				<TextVolumen>Min</TextVolumen>
-				<input type="range" step="10" value={volumen} onChange={handleChange} />
+				<input
+					type="range"
+					step="10"
+					value={props.valVolumen}
+					onChange={props.handleVolumen}
+				/>
 				<TextVolumen>Max</TextVolumen>
 			</VolumenRange>
-			<TextVolumen>{volumen}</TextVolumen>
+			<TextVolumen>{props.valVolumen}</TextVolumen>
 		</VolumenContainer>
 	);
 };
