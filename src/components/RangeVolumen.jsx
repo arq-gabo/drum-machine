@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import "./RangeVolumen.css";
 
@@ -21,15 +21,21 @@ const TextVolumen = styled.span`
 `;
 
 const RangeVolumen = () => {
+	const [volumen, setVolumen] = useState(50);
+
+	const handleChange = e => {
+		setVolumen(e.target.value);
+	};
+
 	return (
 		<VolumenContainer>
 			<TextVolumen>Volumen</TextVolumen>
 			<VolumenRange>
-				<TextVolumen>0</TextVolumen>
-				<input type="range" step="10" />
-				<TextVolumen>10</TextVolumen>
+				<TextVolumen>Min</TextVolumen>
+				<input type="range" step="10" value={volumen} onChange={handleChange} />
+				<TextVolumen>Max</TextVolumen>
 			</VolumenRange>
-			<TextVolumen>10</TextVolumen>
+			<TextVolumen>{volumen}</TextVolumen>
 		</VolumenContainer>
 	);
 };
