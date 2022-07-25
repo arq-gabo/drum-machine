@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import "./RangeVolumen.css";
 
@@ -35,7 +35,9 @@ const RangeVolumen = props => {
 				/>
 				<TextVolumen>Max</TextVolumen>
 			</VolumenRange>
-			<TextVolumen>{props.valVolumen}</TextVolumen>
+			<TextVolumen>
+				{props.valVolumen === "0" ? "Mute" : props.valVolumen}
+			</TextVolumen>
 		</VolumenContainer>
 	);
 };

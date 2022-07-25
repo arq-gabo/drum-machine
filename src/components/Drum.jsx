@@ -16,14 +16,27 @@ const DrumContainer = styled.div`
 	text-align: center;
 `;
 
-const DrumControl = styled.div`
+const DrumPower = styled.div`
 	position: absolute;
-	top: 60px;
+	top: 30px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+`;
+
+const DrumVolumen = styled.div`
+	position: absolute;
+	top: 80px;
 	left: 50%;
 	transform: translate(-50%, -50%);
 `;
 
 const Drum = () => {
+	//State of power botton
+	const [power, setPower] = useState(false);
+
+	//State of volumen level
+	const [volumen, setVolumen] = useState(50);
+
 	//State of sound waves
 	const [soundWaves1, setSoundWaves1] = useState(1);
 	const [soundWaves2, setSoundWaves2] = useState(2);
@@ -38,9 +51,6 @@ const Drum = () => {
 	//State of temp name sound screen
 	const [screenShow, setScreenShow] = useState(false);
 	const [nameSound, setNameSound] = useState("");
-
-	//State of volumen volumen level
-	const [volumen, setVolumen] = useState(50);
 
 	//Functions for show waves in each instrument
 	const showWaves1 = () => {
@@ -108,6 +118,11 @@ const Drum = () => {
 		};
 	}, []);
 
+	// Function for managing switch ON/OFF
+	const handlePower = () => {
+		setPower(!power);
+	};
+
 	// Function for show name sound in time laps
 	const showScreen = () => {
 		setScreenShow(true);
@@ -123,65 +138,98 @@ const Drum = () => {
 
 	return (
 		<DrumContainer>
-			<DrumControl>
-				<PowerButton />
-				<RangeVolumen valVolumen={volumen} handleVolumen={handleVolumen} />
-			</DrumControl>
+			<DrumPower>
+				<PowerButton checked={power} handlePower={handlePower} />
+			</DrumPower>
+
+			{power && (
+				<DrumVolumen>
+					<RangeVolumen valVolumen={volumen} handleVolumen={handleVolumen} />
+				</DrumVolumen>
+			)}
+
 			<img src={drum} alt="drum"></img>
-			<DrumInstrument
-				drumProps={instrument.drumIntrument1}
-				waveSound={showWaves1}
-				key={soundWaves1}
-				valVolumen={volumen}
-			/>
-			<DrumInstrument
-				drumProps={instrument.drumIntrument2}
-				waveSound={showWaves2}
-				key={soundWaves2}
-				valVolumen={volumen}
-			/>
-			<DrumInstrument
-				drumProps={instrument.drumIntrument3}
-				waveSound={showWaves3}
-				key={soundWaves3}
-				valVolumen={volumen}
-			/>
-			<DrumInstrument
-				drumProps={instrument.drumIntrument4}
-				waveSound={showWaves4}
-				key={soundWaves4}
-				valVolumen={volumen}
-			/>
-			<DrumInstrument
-				drumProps={instrument.drumIntrument5}
-				waveSound={showWaves5}
-				key={soundWaves5}
-				valVolumen={volumen}
-			/>
-			<DrumInstrument
-				drumProps={instrument.drumIntrument6}
-				waveSound={showWaves6}
-				key={soundWaves6}
-				valVolumen={volumen}
-			/>
-			<DrumInstrument
-				drumProps={instrument.drumIntrument7}
-				waveSound={showWaves7}
-				key={soundWaves7}
-				valVolumen={volumen}
-			/>
-			<DrumInstrument
-				drumProps={instrument.drumIntrument8}
-				waveSound={showWaves8}
-				key={soundWaves8}
-				valVolumen={volumen}
-			/>
-			<DrumInstrument
-				drumProps={instrument.drumIntrument9}
-				waveSound={showWaves9}
-				key={soundWaves9}
-				valVolumen={volumen}
-			/>
+
+			{power && (
+				<DrumInstrument
+					drumProps={instrument.drumIntrument1}
+					waveSound={showWaves1}
+					key={soundWaves1}
+					valVolumen={volumen}
+				/>
+			)}
+
+			{power && (
+				<DrumInstrument
+					drumProps={instrument.drumIntrument2}
+					waveSound={showWaves2}
+					key={soundWaves2}
+					valVolumen={volumen}
+				/>
+			)}
+
+			{power && (
+				<DrumInstrument
+					drumProps={instrument.drumIntrument3}
+					waveSound={showWaves3}
+					key={soundWaves3}
+					valVolumen={volumen}
+				/>
+			)}
+
+			{power && (
+				<DrumInstrument
+					drumProps={instrument.drumIntrument4}
+					waveSound={showWaves4}
+					key={soundWaves4}
+					valVolumen={volumen}
+				/>
+			)}
+
+			{power && (
+				<DrumInstrument
+					drumProps={instrument.drumIntrument5}
+					waveSound={showWaves5}
+					key={soundWaves5}
+					valVolumen={volumen}
+				/>
+			)}
+
+			{power && (
+				<DrumInstrument
+					drumProps={instrument.drumIntrument6}
+					waveSound={showWaves6}
+					key={soundWaves6}
+					valVolumen={volumen}
+				/>
+			)}
+
+			{power && (
+				<DrumInstrument
+					drumProps={instrument.drumIntrument7}
+					waveSound={showWaves7}
+					key={soundWaves7}
+					valVolumen={volumen}
+				/>
+			)}
+
+			{power && (
+				<DrumInstrument
+					drumProps={instrument.drumIntrument8}
+					waveSound={showWaves8}
+					key={soundWaves8}
+					valVolumen={volumen}
+				/>
+			)}
+
+			{power && (
+				<DrumInstrument
+					drumProps={instrument.drumIntrument9}
+					waveSound={showWaves9}
+					key={soundWaves9}
+					valVolumen={volumen}
+				/>
+			)}
 			{screenShow && <DrumSoundScreen nameSound={nameSound} />}
 		</DrumContainer>
 	);
