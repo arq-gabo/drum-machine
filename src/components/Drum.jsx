@@ -9,7 +9,7 @@ import RangeVolumen from "./RangeVolumen";
 
 //Characteristics of each instrument
 import * as instrument from "./drumInstrument";
-import DrumSoundScreen from "./DrumSoundScreen";
+import DrumSoundName from "./DrumSoundName";
 
 const DrumContainer = styled.div`
 	position: relative;
@@ -35,7 +35,7 @@ const Drum = () => {
 	const [power, setPower] = useState(false);
 
 	//State of volumen level
-	const [volumen, setVolumen] = useState(50);
+	const [volumen, setVolumen] = useState(0);
 
 	//State of sound waves
 	const [soundWaves1, setSoundWaves1] = useState(1);
@@ -48,55 +48,45 @@ const Drum = () => {
 	const [soundWaves8, setSoundWaves8] = useState(8);
 	const [soundWaves9, setSoundWaves9] = useState(9);
 
-	//State of temp name sound screen
-	const [screenShow, setScreenShow] = useState(false);
+	//State of name sound
 	const [nameSound, setNameSound] = useState("");
 
 	//Functions for show waves in each instrument
 	const showWaves1 = () => {
 		setSoundWaves1(Math.random());
 		setNameSound(instrument.drumIntrument1.soundName);
-		showScreen();
 	};
 	const showWaves2 = () => {
 		setSoundWaves2(Math.random());
 		setNameSound(instrument.drumIntrument2.soundName);
-		showScreen();
 	};
 	const showWaves3 = () => {
 		setSoundWaves3(Math.random());
 		setNameSound(instrument.drumIntrument3.soundName);
-		showScreen();
 	};
 	const showWaves4 = () => {
 		setSoundWaves4(Math.random());
 		setNameSound(instrument.drumIntrument4.soundName);
-		showScreen();
 	};
 	const showWaves5 = () => {
 		setSoundWaves5(Math.random());
 		setNameSound(instrument.drumIntrument5.soundName);
-		showScreen();
 	};
 	const showWaves6 = () => {
 		setSoundWaves6(Math.random());
 		setNameSound(instrument.drumIntrument6.soundName);
-		showScreen();
 	};
 	const showWaves7 = () => {
 		setSoundWaves7(Math.random());
 		setNameSound(instrument.drumIntrument7.soundName);
-		showScreen();
 	};
 	const showWaves8 = () => {
 		setSoundWaves8(Math.random());
 		setNameSound(instrument.drumIntrument8.soundName);
-		showScreen();
 	};
 	const showWaves9 = () => {
 		setSoundWaves9(Math.random());
 		setNameSound(instrument.drumIntrument9.soundName);
-		showScreen();
 	};
 
 	// For managing waves and sound on the keyboard
@@ -121,14 +111,8 @@ const Drum = () => {
 	// Function for managing switch ON/OFF
 	const handlePower = () => {
 		setPower(!power);
-	};
-
-	// Function for show name sound in time laps
-	const showScreen = () => {
-		setScreenShow(true);
-		setTimeout(() => {
-			setScreenShow(false);
-		}, 2500);
+		!power ? setTimeout(() => setVolumen(50), 100) : setVolumen(0);
+		if (power) setNameSound("");
 	};
 
 	//Function for adjust volumen level
@@ -230,7 +214,7 @@ const Drum = () => {
 					valVolumen={volumen}
 				/>
 			)}
-			{screenShow && <DrumSoundScreen nameSound={nameSound} />}
+			{nameSound !== "" && <DrumSoundName nameSound={nameSound} />}
 		</DrumContainer>
 	);
 };

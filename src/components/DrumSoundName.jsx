@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const DrumScreenContainer = styled.div`
+const DrumSoundNameContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -17,12 +17,12 @@ const DrumScreenContainer = styled.div`
 	transform: translate(-50%, -50%);
 `;
 
-const DrumSoundScreen = ({ nameSound }) => {
+const DrumSoundName = ({ nameSound }) => {
 	return (
-		<DrumScreenContainer>
+		<DrumSoundNameContainer>
 			<h4>{nameSound}</h4>
-		</DrumScreenContainer>
+		</DrumSoundNameContainer>
 	);
 };
 
-export default DrumSoundScreen;
+export default DrumSoundName;
