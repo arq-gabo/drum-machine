@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
+
+import * as instrument from "./drumInstrument";
 
 const DrumWithStyle = styled.div`
 	display: flex;
@@ -54,14 +56,45 @@ const DrumInstrument = props => {
 		audioLevel.current.volume = props.valVolumen / 100;
 	}, []);
 
+	useEffect(() => {
+		document.addEventListener("keydown", keyEvent);
+		return () => document.removeEventListener("keydown", keyEvent);
+	}, []);
+
+	function handleClick() {
+		playSound();
+		props.waveSound();
+	}
+
+	const playSound = () => {
+		const sound = document.getElementById(props.drumProps.keyBtn.toUpperCase());
+		sound.play();
+	};
+
+	const keyEvent = e => {
+		if (e.keyCode === props.drumProps.keyCode) {
+			handleClick();
+		}
+	};
+
 	return (
-		<DrumWithStyle drumStyle={props.drumProps} onClick={props.waveSound}>
+		<DrumWithStyle
+			id={props.drumProps.id}
+			className="drum-pad"
+			drumStyle={props.drumProps}
+			onClick={handleClick}
+		>
+			<audio
+				id={props.drumProps.keyBtn.toUpperCase()}
+				className="clip"
+				src={props.drumProps.url}
+				ref={audioLevel}
+			/>
 			<div>
 				<DrumLetter>{props.drumProps.keyBtn.toUpperCase()}</DrumLetter>
 			</div>
 			<WaveContainer>
-				<Wave />
-				<audio src={props.drumProps.url} ref={audioLevel} autoPlay />
+				<Wave key={props.keyVal} />
 			</WaveContainer>
 		</DrumWithStyle>
 	);

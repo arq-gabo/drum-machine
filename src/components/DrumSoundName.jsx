@@ -6,7 +6,7 @@ const DrumSoundNameContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 30px;
-	width: auto;
+	width: 120px;
 	background-color: #413f42;
 	color: #f7f7f7;
 	position: absolute;
@@ -20,7 +20,7 @@ const DrumSoundNameContainer = styled.div`
 const DrumSoundName = ({ nameSound }) => {
 	return (
 		<DrumSoundNameContainer>
-			<h4>{nameSound}</h4>
+			<h4 id="display">{nameSound}</h4>
 		</DrumSoundNameContainer>
 	);
 };

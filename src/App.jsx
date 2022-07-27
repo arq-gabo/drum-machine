@@ -18,7 +18,7 @@ const Container = styled.div`
 
 function App() {
 	return (
-		<Container className="App">
+		<Container className="App" id="drum-machine">
 			<Header />
 			<Drum />
 			<Footer />

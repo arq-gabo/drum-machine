@@ -32,10 +32,10 @@ const DrumVolumen = styled.div`
 
 const Drum = () => {
 	//State of power botton
-	const [power, setPower] = useState(false);
+	const [power, setPower] = useState(true);
 
 	//State of volumen level
-	const [volumen, setVolumen] = useState(0);
+	const [volumen, setVolumen] = useState(50);
 
 	//State of sound waves
 	const [soundWaves1, setSoundWaves1] = useState(1);
@@ -55,7 +55,6 @@ const Drum = () => {
 	const showWaves1 = () => {
 		setSoundWaves1(Math.random());
 		setNameSound(instrument.drumIntrument1.soundName);
-		timing();
 	};
 	const showWaves2 = () => {
 		setSoundWaves2(Math.random());
@@ -90,29 +89,9 @@ const Drum = () => {
 		setNameSound(instrument.drumIntrument9.soundName);
 	};
 
-	// For managing waves and sound on the keyboard
-	useEffect(() => {
-		const listener = e => {
-			if (e.key === instrument.drumIntrument1.keyBtn) showWaves1();
-			if (e.key === instrument.drumIntrument2.keyBtn) showWaves2();
-			if (e.key === instrument.drumIntrument3.keyBtn) showWaves3();
-			if (e.key === instrument.drumIntrument4.keyBtn) showWaves4();
-			if (e.key === instrument.drumIntrument5.keyBtn) showWaves5();
-			if (e.key === instrument.drumIntrument6.keyBtn) showWaves6();
-			if (e.key === instrument.drumIntrument7.keyBtn) showWaves7();
-			if (e.key === instrument.drumIntrument8.keyBtn) showWaves8();
-			if (e.key === instrument.drumIntrument9.keyBtn) showWaves9();
-		};
-		document.addEventListener("keydown", listener);
-		return () => {
-			document.removeEventListener("keydown", listener);
-		};
-	}, []);
-
 	// Function for managing switch ON/OFF
 	const handlePower = () => {
 		setPower(!power);
-		!power ? setTimeout(() => setVolumen(50), 100) : setVolumen(0);
 		if (power) setNameSound("");
 	};
 
@@ -139,7 +118,7 @@ const Drum = () => {
 				<DrumInstrument
 					drumProps={instrument.drumIntrument1}
 					waveSound={showWaves1}
-					key={soundWaves1}
+					keyVal={soundWaves1}
 					valVolumen={volumen}
 				/>
 			)}
@@ -148,7 +127,7 @@ const Drum = () => {
 				<DrumInstrument
 					drumProps={instrument.drumIntrument2}
 					waveSound={showWaves2}
-					key={soundWaves2}
+					keyVal={soundWaves2}
 					valVolumen={volumen}
 				/>
 			)}
@@ -157,7 +136,7 @@ const Drum = () => {
 				<DrumInstrument
 					drumProps={instrument.drumIntrument3}
 					waveSound={showWaves3}
-					key={soundWaves3}
+					keyVal={soundWaves3}
 					valVolumen={volumen}
 				/>
 			)}
@@ -166,7 +145,7 @@ const Drum = () => {
 				<DrumInstrument
 					drumProps={instrument.drumIntrument4}
 					waveSound={showWaves4}
-					key={soundWaves4}
+					keyVal={soundWaves4}
 					valVolumen={volumen}
 				/>
 			)}
@@ -175,7 +154,7 @@ const Drum = () => {
 				<DrumInstrument
 					drumProps={instrument.drumIntrument5}
 					waveSound={showWaves5}
-					key={soundWaves5}
+					keyVal={soundWaves5}
 					valVolumen={volumen}
 				/>
 			)}
@@ -184,7 +163,7 @@ const Drum = () => {
 				<DrumInstrument
 					drumProps={instrument.drumIntrument6}
 					waveSound={showWaves6}
-					key={soundWaves6}
+					keyVal={soundWaves6}
 					valVolumen={volumen}
 				/>
 			)}
@@ -193,7 +172,7 @@ const Drum = () => {
 				<DrumInstrument
 					drumProps={instrument.drumIntrument7}
 					waveSound={showWaves7}
-					key={soundWaves7}
+					keyVal={soundWaves7}
 					valVolumen={volumen}
 				/>
 			)}
@@ -202,7 +181,7 @@ const Drum = () => {
 				<DrumInstrument
 					drumProps={instrument.drumIntrument8}
 					waveSound={showWaves8}
-					key={soundWaves8}
+					keyVal={soundWaves8}
 					valVolumen={volumen}
 				/>
 			)}
@@ -211,11 +190,11 @@ const Drum = () => {
 				<DrumInstrument
 					drumProps={instrument.drumIntrument9}
 					waveSound={showWaves9}
-					key={soundWaves9}
+					keyVal={soundWaves9}
 					valVolumen={volumen}
 				/>
 			)}
-			{nameSound !== "" && <DrumSoundName nameSound={nameSound} />}
+			{power && <DrumSoundName nameSound={nameSound} />}
 		</DrumContainer>
 	);
 };
