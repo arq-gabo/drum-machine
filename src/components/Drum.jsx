@@ -55,6 +55,7 @@ const Drum = () => {
 	const showWaves1 = () => {
 		setSoundWaves1(Math.random());
 		setNameSound(instrument.drumIntrument1.soundName);
+		timing();
 	};
 	const showWaves2 = () => {
 		setSoundWaves2(Math.random());
