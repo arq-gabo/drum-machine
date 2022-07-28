@@ -50,14 +50,16 @@ const Wave = styled.div`
 `;
 
 const DrumInstrument = props => {
-	const audioLevel = useRef();
-
 	useEffect(() => {
-		audioLevel.current.volume = props.valVolumen / 100;
-	}, []);
+		let levelSound = document.getElementById(
+			props.drumProps.keyBtn.toUpperCase()
+		);
+		levelSound.volume = props.valVolumen / 100;
+	}, [props.valVolumen]);
 
 	useEffect(() => {
 		document.addEventListener("keydown", keyEvent);
+
 		return () => document.removeEventListener("keydown", keyEvent);
 	}, []);
 
@@ -88,7 +90,7 @@ const DrumInstrument = props => {
 				id={props.drumProps.keyBtn.toUpperCase()}
 				className="clip"
 				src={props.drumProps.url}
-				ref={audioLevel}
+				//ref={audioLevel}
 			/>
 			<div>
 				<DrumLetter>{props.drumProps.keyBtn.toUpperCase()}</DrumLetter>
