@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 import * as instrument from "./drumInstrument";
@@ -50,6 +50,7 @@ const Wave = styled.div`
 `;
 
 const DrumInstrument = props => {
+	// Sound level management using volumen level props
 	useEffect(() => {
 		let levelSound = document.getElementById(
 			props.drumProps.keyBtn.toUpperCase()
@@ -57,22 +58,26 @@ const DrumInstrument = props => {
 		levelSound.volume = props.valVolumen / 100;
 	}, [props.valVolumen]);
 
+	// Management keyboard event
 	useEffect(() => {
 		document.addEventListener("keydown", keyEvent);
 
 		return () => document.removeEventListener("keydown", keyEvent);
 	}, []);
 
+	// Function with make click calling play sound and wave sound from props
 	function handleClick() {
 		playSound();
 		props.waveSound();
 	}
 
+	// Function for play sound
 	const playSound = () => {
 		const sound = document.getElementById(props.drumProps.keyBtn.toUpperCase());
 		sound.play();
 	};
 
+	// Function to recognize when press a keyboard botton
 	const keyEvent = e => {
 		if (e.keyCode === props.drumProps.keyCode) {
 			handleClick();
@@ -90,7 +95,6 @@ const DrumInstrument = props => {
 				id={props.drumProps.keyBtn.toUpperCase()}
 				className="clip"
 				src={props.drumProps.url}
-				//ref={audioLevel}
 			/>
 			<div>
 				<DrumLetter>{props.drumProps.keyBtn.toUpperCase()}</DrumLetter>
