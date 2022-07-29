@@ -14,7 +14,7 @@
 
 - Require Node.js version 16.15.1
 
-1. Clone the project from GitHub Repository [GitHub Repository](https://github.com/arq-gabo/drum-machine)
+1. Clone the project from [GitHub Repository](https://github.com/arq-gabo/drum-machine)
 2. `npm install` - for install dependency
 3. `npm run dev` - for run development enviroment
 4. `npm run build` - for run production enviroment
@@ -26,6 +26,7 @@
 - This project was created from VITE
 - This project used styled-components to style the components
 - Component states were passed as props from parent to child components
+- This project was deploy using VERCEL
 
 ---
 

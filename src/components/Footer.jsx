@@ -7,10 +7,19 @@ const FooterText = styled.h6`
 	color: #413f42;
 `;
 
+const Anchor = styled.a`
+	text-decoration: none;
+`;
+
 const Footer = () => {
 	return (
 		<div>
-			<FooterText>By José Gabriel Guerra For Free Code Camp</FooterText>
+			<FooterText>
+				By José Gabriel Guerra For Free Code Camp -
+				<Anchor href="https://github.com/arq-gabo/drum-machine" target="_blank">
+					&nbsp;code in GitHub
+				</Anchor>
+			</FooterText>
 		</div>
 	);
 };
